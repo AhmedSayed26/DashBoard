@@ -34,7 +34,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+
   ...theme.mixins.toolbar,
 }));
 const openedMixin = (theme) => ({
@@ -159,7 +159,7 @@ export default function SidBar({ open, handleDrawerClose }) {
               <ListItemButton
                 onClick={() => {
                   navigate(item.path);
-                  console.log("hallo");
+                  // console.log("hallo");
                 }}
                 sx={[
                   {
@@ -221,7 +221,7 @@ export default function SidBar({ open, handleDrawerClose }) {
               <ListItemButton
                 onClick={() => {
                   navigate(item.path);
-                  console.log("hallo");
+                  // console.log("hallo");
                 }}
                 sx={[
                   {
@@ -283,7 +283,7 @@ export default function SidBar({ open, handleDrawerClose }) {
               <ListItemButton
                 onClick={() => {
                   navigate(items.path);
-                  console.log("hallo");
+                  // console.log("hallo");
                 }}
                 sx={[
                   {
