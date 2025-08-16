@@ -9,7 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
-import Dashboard from "./page/Dashboard/Dashboard";
+// import DashBoard from "./page/Dashboard/Dashboard";
 import Team from "./page/Team/Team";
 import Contacts from "./page/Contact/Contact";
 import Invoices from "./page/Invoices/Invoices";
@@ -21,11 +21,12 @@ import PieChart from "./page/Pie/Pie";
 import LineChart from "./page/Line/Line";
 import Geography from "./page/Geography/Geography";
 // import NotFound from "./page/notFound/NotFound";
+import DashBoard from "./page/DashBoard/DashBoard";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<Dashboard />} />
+      <Route index element={<DashBoard />} />
       <Route path="team" element={<Team />} />
 
       <Route path="contacts" element={<Contacts />} />
