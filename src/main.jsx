@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
+// import Dashboard from "./page/DashBoard/DashBoard";
 import Dashboard from "./page/DashBoard/Dashboard";
 import Team from "./page/Team/Team";
 import Contacts from "./page/Contact/Contact";
