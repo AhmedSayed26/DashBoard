@@ -9,8 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App";
-// import Dashboard from "./page/DashBoard/DashBoard";
-import DashBoard from "./page/DashBoard/Dashboard";
+import Dashboard from "./page/Dashboard/Dashboard";
 import Team from "./page/Team/Team";
 import Contacts from "./page/Contact/Contact";
 import Invoices from "./page/Invoices/Invoices";
@@ -26,7 +25,7 @@ import Geography from "./page/Geography/Geography";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
-      <Route index element={<DashBoard />} />
+      <Route index element={<Dashboard />} />
       <Route path="team" element={<Team />} />
 
       <Route path="contacts" element={<Contacts />} />
