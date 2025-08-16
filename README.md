@@ -2,8 +2,8 @@
 
 A minimal, fast, and modern React dashboard template powered by Vite, with built-in ESLint configuration for optimal development experience.
 
-[![Live Demo](https://dash-board-9e5c.vercel.app/)
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-brightgreen?style=for-the-badge)](https://dash-board-9e5c.vercel.app/) 
 
 ## Table of Contents
 
