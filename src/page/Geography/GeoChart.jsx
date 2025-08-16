@@ -1,57 +1,18 @@
 import React from "react";
-import { ResponsiveBar } from "@nivo/bar";
-import { Box } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { ResponsiveChoropleth } from "@nivo/geo";
+import { Box, useTheme } from "@mui/material";
+import { data } from "./data";
+import { geo } from "./world_countries";
 
-export default function BarChart({ isDashbord = false }) {
+export default function GeoChart({ isDashbord = false }) {
   const theme = useTheme();
-  const data = [
-    {
-      year: 2019,
-      Spain: 900,
-      France: 1400,
-      Germany: 1700,
-    },
-
-    {
-      year: 2020,
-      Spain: 1000,
-      France: 1500,
-      Germany: 1800,
-    },
-
-    {
-      year: 2021,
-      Spain: 1100,
-      France: 1600,
-      Germany: 1900,
-    },
-
-    {
-      year: 2022,
-      Spain: 1200,
-      France: 1700,
-      Germany: 2000,
-    },
-
-    {
-      year: 2023,
-      Spain: 1260,
-      France: 1709,
-      Germany: 2080,
-    },
-  ];
   return (
     <Box sx={{ height: isDashbord ? "400px" : "75vh" }}>
-      <ResponsiveBar
+      <ResponsiveChoropleth
+        data={data}
         theme={{
-          // background: "#ffffff",
-          text: {
-            fontSize: 11,
-            fill: theme.palette.text.primary,
-            outlineWidth: 0,
-            outlineColor: "#ffffff",
-          },
+          textColor: theme.palette.text.primary,
+          fontSize: 11,
           axis: {
             domain: {
               line: {
@@ -63,8 +24,6 @@ export default function BarChart({ isDashbord = false }) {
               text: {
                 fontSize: 12,
                 fill: theme.palette.text.primary,
-                outlineWidth: 0,
-                outlineColor: "#ffffff",
               },
             },
             ticks: {
@@ -74,16 +33,14 @@ export default function BarChart({ isDashbord = false }) {
               },
               text: {
                 fontSize: 11,
-                fill: theme.palette.text.primary,
-                outlineWidth: 0,
-                outlineColor: "#ffffff",
+                fill: theme.palette.text.secondary,
               },
             },
           },
           grid: {
             line: {
-              stroke: "#dddddd",
-              strokeWidth: 1,
+              stroke: theme.palette.divider,
+              strokeWidth: 0,
             },
           },
           legends: {
@@ -91,30 +48,24 @@ export default function BarChart({ isDashbord = false }) {
               text: {
                 fontSize: 11,
                 fill: theme.palette.text.primary,
-                outlineWidth: 0,
-                outlineColor: "#ffffff",
               },
             },
             text: {
               fontSize: 11,
               fill: theme.palette.text.primary,
-              outlineWidth: 0,
-              outlineColor: "#ffffff",
             },
             ticks: {
               line: {},
               text: {
                 fontSize: 10,
                 fill: theme.palette.text.primary,
-                outlineWidth: 0,
-                outlineColor: "#ffffff",
               },
             },
           },
           annotations: {
             text: {
               fontSize: 13,
-              fill: "#333333",
+              fill: theme.palette.text.primary,
               outlineWidth: 2,
               outlineColor: "#ffffff",
               outlineOpacity: 1,
@@ -141,10 +92,9 @@ export default function BarChart({ isDashbord = false }) {
             },
           },
           tooltip: {
-            wrapper: {},
             container: {
-              background: "#ffffff",
-              color: "#333333",
+              background: theme.palette.background.default,
+              color: theme.palette.text.primary,
               fontSize: 12,
             },
             basic: {},
@@ -154,28 +104,34 @@ export default function BarChart({ isDashbord = false }) {
             tableCellValue: {},
           },
         }}
-        data={data}
-        keys={["Spain", "France", "Germany"]}
-        indexBy="year"
-        labelSkipWidth={12}
-        labelSkipHeight={12}
+        features={geo.features}
+        margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+        colors="nivo"
+        domain={[0, 1000000]}
+        unknownColor={theme.palette.text.primary}
+        label="properties.name"
+        valueFormat=".2s"
+        enableGraticule={true}
+        graticuleLineColor="#dddddd"
+        borderWidth={0.5}
+        borderColor="#152538"
+        projectionScale={isDashbord ? 70 : 150}
         legends={[
           {
-            dataFrom: "keys",
-            anchor: "bottom-right",
+            anchor: "bottom-left",
             direction: "column",
-            translateX: 120,
-            itemsSpacing: 3,
-            itemWidth: 100,
-            itemHeight: 16,
+            justify: true,
+            translateX: 20,
+            translateY: -100,
+            itemsSpacing: 0,
+            itemWidth: 94,
+            itemHeight: 18,
+            itemDirection: "left-to-right",
+            itemTextColor: theme.palette.text.primary,
+            itemOpacity: 0.85,
+            symbolSize: 18,
           },
         ]}
-        axisBottom={{ legend: "Year", legendOffset: 35 }}
-        axisLeft={{
-          legend: "salary/month",
-          legendOffset: isDashbord ? -50 : -55,
-        }}
-        margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       />
     </Box>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { ResponsiveLine } from "@nivo/line";
 import { Box, useTheme } from "@mui/material";
 
-export default function LineChart() {
+export default function LineChart({ isDahboard = false }) {
   const theme = useTheme();
   const data = [
     {
@@ -223,7 +223,7 @@ export default function LineChart() {
     },
   ];
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box sx={{ height: isDahboard ? "280px" : "75vh" }}>
       <ResponsiveLine
         theme={{
           textColor: theme.palette.text.primary,
@@ -328,8 +328,11 @@ export default function LineChart() {
           stacked: true,
           reverse: false,
         }}
-        axisBottom={{ legend: "transportation", legendOffset: 36 }}
-        axisLeft={{ legend: "count", legendOffset: -40 }}
+        axisBottom={{
+          legend: isDahboard ? "" : "Transportation",
+          legendOffset: 36,
+        }}
+        axisLeft={{ legend: isDahboard ? "" : "Count", legendOffset: -40 }}
         pointSize={10}
         pointColor={{ theme: "background" }}
         pointBorderWidth={2}

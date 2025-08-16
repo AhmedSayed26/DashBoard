@@ -11,7 +11,7 @@ import {
 } from "@mui/x-data-grid";
 import { Box } from "@mui/material";
 import { rows, columns } from "./data";
-import Header from "../../Components/Header";
+import Header from "./../../Components/Header";
 
 function Button(props) {
   return (
@@ -51,19 +51,21 @@ function CustomToolbar() {
 
 export default function Contact() {
   return (
-    <Box>
-      <Header
-        title={"Contact"}
-        subTitle={"List of Contacts for Future Reference"}
-      />
-      <Box sx={{ height: 700, mx: "auto" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          slots={{ toolbar: CustomToolbar }}
-          showToolbar
+    <>
+      <Box>
+        <Header
+          title={"Contact"}
+          subTitle={"List of Contacts for Future Reference"}
         />
+        <Box sx={{ height: 700, mx: "auto" }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            slots={{ toolbar: CustomToolbar }}
+            showToolbar
+          />
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 }

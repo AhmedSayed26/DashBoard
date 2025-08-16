@@ -2,7 +2,7 @@ import React from "react";
 import { ResponsivePie } from "@nivo/pie";
 import { Box, useTheme } from "@mui/material";
 
-export default function PieChart() {
+export default function PieChart({ isDashbord = false }) {
   const theme = useTheme();
   const data = [
     {
@@ -37,7 +37,7 @@ export default function PieChart() {
     },
   ];
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box sx={{ height: isDashbord ? "300px" : "75vh" }}>
       <ResponsivePie
         theme={{
           textColor: theme.palette.text.primary,
@@ -134,27 +134,38 @@ export default function PieChart() {
           },
         }}
         data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-        innerRadius={0.5}
+        margin={{
+          top: 10,
+          right: isDashbord ? 80 : 80,
+          bottom: 10,
+          left: isDashbord ? 80 : 80,
+        }}
+        innerRadius={isDashbord ? 0.7 : 0.5}
         padAngle={0.6}
         cornerRadius={2}
         activeOuterRadiusOffset={8}
-        arcLinkLabelsSkipAngle={10}
+        arcLinkLabelsSkipAngle={isDashbord ? 360 : 10}
         arcLinkLabelsTextColor={theme.palette.text.primary}
         arcLinkLabelsThickness={2}
         arcLinkLabelsColor={{ from: "color" }}
-        arcLabelsSkipAngle={10}
+        arcLabelsSkipAngle={isDashbord ? 360 : 10}
         arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
-        legends={[
-          {
-            anchor: "bottom",
-            direction: "row",
-            translateY: 56,
-            itemWidth: 100,
-            itemHeight: 18,
-            symbolShape: "circle",
-          },
-        ]}
+        enableArcLabels={isDashbord ? false : true}
+        enableArcLinkLabels={isDashbord ? false : true}
+        legends={
+          isDashbord
+            ? []
+            : [
+                {
+                  anchor: "bottom",
+                  direction: "row",
+                  translateY: 56,
+                  itemWidth: 100,
+                  itemHeight: 18,
+                  symbolShape: "circle",
+                },
+              ]
+        }
       />
     </Box>
   );

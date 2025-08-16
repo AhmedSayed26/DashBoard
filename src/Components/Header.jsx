@@ -4,7 +4,7 @@ import { Box, Typography, useTheme } from "@mui/material";
 const Header = ({ title, subTitle, isDashboard = false }) => {
   const theme = useTheme();
   return (
-    <Box mb={isDashboard ? 2 : 4}>
+    <Box m={isDashboard ? 2 : 1}>
       <Typography
         sx={{
           color: theme.palette.info.light,
